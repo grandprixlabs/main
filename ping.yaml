@@ -1,9 +1,10 @@
 ---
 - hosts: all
   gather_facts: False
-  #connection: local
+  connection: local
 
   tasks:
     - name: ping
-      shell: ping -c 1 -w 2 {{ ansible_host }}
+      ansible.builtin.shell:
+        cmd: ping -c 1 -w 2 {{ ansible_host }}
       ignore_errors: true
