@@ -1,9 +1,10 @@
----
-- name: Test network connectivity on Cisco devices
-  hosts: cisco_devices
-  gather_facts: no
+- name: Test connectivity to 8.8.8.8
+  hosts: all
   tasks:
-    - name: Ping a specific IP from the device
-      cisco.ios.ios_ping:
-        dest: 8.8.8.8
-        count: 5
+    - name: Ping 8.8.8.8
+      ansible.builtin.shell: ping -c 4 8.8.8.8
+      register: ping_result
+
+    - name: Display ping results
+      ansible.builtin.debug:
+        var: ping_result.stdout
