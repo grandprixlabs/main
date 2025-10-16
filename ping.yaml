@@ -1,10 +1,5 @@
-- name: Test connectivity to 8.8.8.8
+- name: Check connectivity with all hosts
   hosts: all
   tasks:
-    - name: Ping 8.8.8.8
-      ansible.builtin.shell: ping -c 4 8.8.8.8
-      register: ping_result
-
-    - name: Display ping results
-      ansible.builtin.debug:
-        var: ping_result.stdout
+    - name: Ping all hosts
+      ansible.builtin.ping:
