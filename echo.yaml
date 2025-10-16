@@ -1,0 +1,6 @@
+---
+- name: Run a command using a custom shell
+ ansible.builtin.shell:
+   cmd: echo "Hello, World!"
+   args:
+     executable: /usr/bin/bash
