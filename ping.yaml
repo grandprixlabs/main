@@ -1,5 +1,9 @@
-- name: Check connectivity with all hosts
-  hosts: all
+---
+- hosts: all
+  gather_facts: False
+  connection: local
+
   tasks:
-    - name: Ping all hosts
-      ansible.builtin.ping:
+    - name: ping
+      shell: ping -c 1 -w 2 {{ ansible_host }}
+      ignore_errors: true
