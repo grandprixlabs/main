@@ -1,0 +1,9 @@
+---
+- name: Test network connectivity on Cisco devices
+  hosts: cisco_devices
+  gather_facts: no
+  tasks:
+    - name: Ping a specific IP from the device
+      cisco.ios.ios_ping:
+        dest: 8.8.8.8
+        count: 5
